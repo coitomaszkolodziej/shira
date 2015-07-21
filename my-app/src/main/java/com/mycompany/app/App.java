@@ -13,8 +13,9 @@ public class App
         Auth auth = Auth.getInstance();
        
         auth.login("radek", "radek");
-
-           
+        
+        System.out.println(Math.add(7,1));
+        
 
 
     }
