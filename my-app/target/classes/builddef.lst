@@ -1,0 +1,15 @@
+-1.6
+-outxml
+-outxmlfile
+META-INF/aop.xml
+-source
+1.6
+-target
+1.6
+-classpath
+C:\Users\Praktyki\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\Praktyki\.m2\repository\commons-lang\commons-lang\2.4\commons-lang-2.4.jar;C:\Users\Praktyki\.m2\repository\org\apache\shiro\shiro-aspectj\1.2.3\shiro-aspectj-1.2.3.jar;C:\Users\Praktyki\.m2\repository\org\apache\shiro\shiro-core\1.2.3\shiro-core-1.2.3.jar;C:\Users\Praktyki\.m2\repository\org\aspectj\aspectjrt\1.7.3\aspectjrt-1.7.3.jar;C:\Users\Praktyki\.m2\repository\org\slf4j\slf4j-simple\1.6.4\slf4j-simple-1.6.4.jar;C:\Users\Praktyki\.m2\repository\cglib\cglib\2.2.2\cglib-2.2.2.jar;C:\Users\Praktyki\.m2\repository\org\aspectj\aspectjweaver\1.6.12\aspectjweaver-1.6.12.jar;C:\Users\Praktyki\.m2\repository\org\slf4j\slf4j-api\1.6.4\slf4j-api-1.6.4.jar;C:\Users\Praktyki\.m2\repository\commons-beanutils\commons-beanutils\1.8.3\commons-beanutils-1.8.3.jar;C:\Users\Praktyki\.m2\repository\asm\asm\3.3.1\asm-3.3.1.jar;C:\Users\Praktyki\Desktop\my-app\target\classes
+-d
+C:\Users\Praktyki\Desktop\my-app\target\classes
+C:\Users\Praktyki\Desktop\my-app\src\main\java\com\mycompany\app\App.java
+C:\Users\Praktyki\Desktop\my-app\src\main\java\com\mycompany\app\Auth.java
+C:\Users\Praktyki\Desktop\my-app\src\main\java\com\mycompany\app\Math.java

@@ -65,7 +65,8 @@ public class Auth {
             log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
 
         }
-
+        
+   //    System.out.println(currentUser.getPrincipals().toString());
     }
 
 }

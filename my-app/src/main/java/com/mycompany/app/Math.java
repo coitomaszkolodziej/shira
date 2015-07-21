@@ -6,17 +6,23 @@
 package com.mycompany.app;
 
 import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.aop.AnnotationHandler;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 
 /**
  *
  * @author Praktyki
  */
 public class Math {
-    @RequiresRoles( "radek" )
+    @RequiresRoles( "radek3" )
     static public int add(int a, int b) {
         return a + b;
     }
-    @RequiresRoles( "radek" )
+    @RequiresRoles( "radek4" )
     static public int substract(int a, int b) {
         return a + b;
     }
