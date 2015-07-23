@@ -1,0 +1,1 @@
+SELECT t3.permission_name FROM users t1 JOIN roles t2 ON t1.user_id = t2.user_id JOIN permissions t3 ON t2.role_id = t3.role_id WHERE t1.login_name = 'marek'
