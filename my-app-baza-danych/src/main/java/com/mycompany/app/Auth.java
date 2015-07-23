@@ -77,14 +77,26 @@ public class Auth {
     }
     
     boolean myCheckRole(String roleIdentifier)  throws AuthorizationException {
+        Subject currentUser = SecurityUtils.getSubject(); 
         try{
-            Subject currentUser = SecurityUtils.getSubject();
-            
+            currentUser.checkRole(roleIdentifier);
         }catch (AuthorizationException ae){
-            Subject currentUser = SecurityUtils.getSubject();
             log.info ("User [" + currentUser.getPrincipal() + "] has no role " + roleIdentifier);
             return false;
         }
+        log.info ("User [" + currentUser.getPrincipal() + "] has role " + roleIdentifier);
+        return true;
+    }
+    
+    boolean myCheckPermission(String permission)  throws AuthorizationException {
+        Subject currentUser = SecurityUtils.getSubject(); 
+        try{
+            currentUser.checkPermission(permission);
+        }catch (AuthorizationException ae){
+            log.info ("User [" + currentUser.getPrincipal() + "] has no permission " + permission);
+            return false;
+        }
+        log.info ("User [" + currentUser.getPrincipal() + "] has permission " + permission);
         return true;
     }
     
