@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 public class Auth {
 
     private Auth() {
-        factory = new IniSecurityManagerFactory("C:\\Users\\Praktyki\\Desktop\\my-app\\shiro.ini");
+        factory = new IniSecurityManagerFactory("/home/radek/Pulpit/shira/my-app/shiro.ini");
         securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         log = LoggerFactory.getLogger(Auth.class);

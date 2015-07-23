@@ -1,28 +1,30 @@
 package com.mycompany.app;
 
 
-import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
-import org.apache.shiro.subject.Subject;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.config.IniSecurityManagerFactory;
-import org.apache.shiro.aop.AnnotationHandler;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.apache.shiro.guice.aop.ShiroAopModule;
+import org.apache.shiro.mgt.SecurityManager;
 
-public class App 
-{
-    public static void main( String[] args )
-    {
-        Auth auth = Auth.getInstance();
-       
-        auth.login("radek", "radek");
-        
-        System.out.println(Math.add(7,1));
-        
 
+public class App {
+
+    public static void main(String[] args) {
+
+        Injector injector = Guice.createInjector(new ShiroAopModule(), new MyShiroModule());
+
+        SecurityManager securityManager = injector.getInstance(SecurityManager.class);
+        SecurityUtils.setSecurityManager(securityManager);
+        
+        /*
+         Subject currentUser = SecurityUtils.getSubject();
+
+         UsernamePasswordToken token = new UsernamePasswordToken("radek", "radek");
+         token.setRememberMe(true);
+         */
+        System.out.println(Math.add(7, 1));
 
     }
+
 }

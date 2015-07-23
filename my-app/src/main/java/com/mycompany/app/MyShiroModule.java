@@ -7,48 +7,36 @@ package com.mycompany.app;
 
 import com.google.inject.Provides;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.aop.AnnotationHandler;
 import org.apache.shiro.config.Ini;
 import org.apache.shiro.guice.ShiroModule;
+import org.apache.shiro.guice.aop.ShiroAopModule;
 import org.apache.shiro.realm.text.IniRealm;
 
 /**
  *
- * @author Praktyki
+ * @author radek
  */
-public class Math extends ShiroModule {
+public class MyShiroModule extends ShiroAopModule {
 
-    @RequiresRoles("radek3")
+
+    @RequiresRoles( "radek3" )
     static public int add(int a, int b) {
         return a + b;
     }
-
-    @RequiresRoles("radek4")
+    @RequiresRoles( "radek4" )
     static public int substract(int a, int b) {
         return a + b;
     }
-
-    @RequiresRoles("radek")
+    @RequiresRoles( "radek" )
     static public int multiply(int a, int b) {
         return a * b;
     }
-
-    @RequiresRoles("radek")
+    @RequiresRoles( "radek" )
     static public int divide(int a, int b) {
         return a / b;
     }
-
-    @Override
-    protected void configureShiro() {
-        try {
-            bindRealm().toConstructor(IniRealm.class.getConstructor(Ini.class));
-        } catch (NoSuchMethodException e) {
-            addError(e);
-        }
-
+    @Provides
+    Ini loadShiroIni() {
+        return Ini.fromResourcePath("/home/radek/Pulpit/shira/my-app/shiro.ini");
     }
-        @Provides
-        Ini loadShiroIni() {
-            return Ini.fromResourcePath("classpath:shiro.ini");
-        }
 }
