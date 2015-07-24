@@ -13,6 +13,8 @@ import org.slf4j.LoggerFactory;
  *
  * @author Praktyki
  */
+
+
 public class Auth {
     private Auth() {
         factory = new IniSecurityManagerFactory("shiro.ini");

@@ -12,6 +12,7 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
  *
  * @author Praktyki
  */
+
 public class Math {
 
     static public int add(int a, int b) throws AccessDenied {
