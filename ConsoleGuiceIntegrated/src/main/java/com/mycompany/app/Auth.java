@@ -16,7 +16,7 @@ import org.slf4j.LoggerFactory;
 public class Auth {
 
     private Auth() {
-        factory = new IniSecurityManagerFactory("C:\\Users\\Praktyki\\Desktop\\my-app\\shiro.ini");
+        factory = new IniSecurityManagerFactory("shiro.ini");
         securityManager = factory.getInstance();
         SecurityUtils.setSecurityManager(securityManager);
         log = LoggerFactory.getLogger(Auth.class);
@@ -37,11 +37,10 @@ public class Auth {
     public void logout() {
         Subject currentUser = SecurityUtils.getSubject();
         currentUser.logout();
-
     }
 
     public void login(String login, String pass) throws UnknownAccountException, IncorrectCredentialsException,
-            LockedAccountException, AuthenticationException {
+        LockedAccountException, AuthenticationException {
         Subject currentUser = SecurityUtils.getSubject();
         if (!currentUser.isAuthenticated()) {
             UsernamePasswordToken token = new UsernamePasswordToken(login, pass);
@@ -49,7 +48,5 @@ public class Auth {
             currentUser.login(token);
             log.info("User [" + currentUser.getPrincipal() + "] logged in successfully.");
         }
-
     }
-
 }

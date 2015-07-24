@@ -6,6 +6,7 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.LockedAccountException;
 import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.guice.aop.ShiroAopModule;
 
 public class App {
@@ -22,10 +23,14 @@ public class App {
 
         Injector injector = Guice.createInjector(new ShiroAopModule());
         Math math = injector.getInstance(Math.class);
-
-        System.out.println(math.add(1, 2));
-       // System.out.println(math.multiply(1, 2));
-
+        
+        try {
+            System.out.println(math.add(1, 2));
+            System.out.println(math.multiply(1, 2));           
+        }catch (AuthorizationException ae){
+            System.err.println(ae);
+        }
+  
     }
 
 }
