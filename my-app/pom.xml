@@ -22,9 +22,16 @@
             <artifactId>commons-lang</artifactId>
             <version>2.4</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>3.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-guice</artifactId>
+<<<<<<< HEAD
             <version>1.2.3</version>
         </dependency>
             <dependency>
@@ -36,13 +43,20 @@
             <groupId>aopalliance</groupId>
             <artifactId>aopalliance</artifactId>
             <version>1.0</version>
+=======
+            <version>1.2.2</version>
+>>>>>>> cb818f4affff8107c58ec441a8f0f73c359f8fa9
         </dependency>
+
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>1.2.3</version>
         </dependency>
+<<<<<<< HEAD
 
+=======
+>>>>>>> cb818f4affff8107c58ec441a8f0f73c359f8fa9
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -56,7 +70,12 @@
             <version>2.2.2</version>
         </dependency>
 
+<<<<<<< HEAD
    
     </dependencies>
  
+=======
+    </dependencies>
+  
+>>>>>>> cb818f4affff8107c58ec441a8f0f73c359f8fa9
 </project>
