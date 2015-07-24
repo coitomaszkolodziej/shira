@@ -13,20 +13,36 @@ import org.apache.shiro.authz.annotation.RequiresRoles;
  * @author Praktyki
  */
 public class Math {
-    @RequiresAuthentication
-    static public int add(int a, int b) {
-        return a + b;
+
+    static public int add(int a, int b) throws AccessDenied {
+        if ((Auth.getInstance().myCheckPermission("dodawanie_2_3") && a == 2 && b == 2)
+                || Auth.getInstance().myCheckPermission("dodawanie")) {
+            return a + b;
+        } else {
+            throw new AccessDenied();
+        }
     }
-    @RequiresRoles( "radek" )
-    static public int substract(int a, int b) {
-        return a + b;
+
+    static public int substract(int a, int b) throws AccessDenied {
+        if (Auth.getInstance().myCheckPermission("odejmowanie")) {
+            return a - b;
+        } else {
+            throw new AccessDenied();
+        }
     }
-    @RequiresRoles("schwartz") 
-    static public int multiply(int a, int b) {
-        return a * b;
+
+    static public int multiply(int a, int b) throws AccessDenied {
+        if (Auth.getInstance().myCheckPermission("mnozenie")) {
+            return a * b;
+        } else {
+            throw new AccessDenied();
+        }
     }
-    @RequiresRoles( "radek" )
-    static public int divide(int a, int b) {
-        return a / b;
+    static public int divide(int a, int b) throws AccessDenied{
+          if (Auth.getInstance().myCheckPermission("dzielenie")) {
+            return a * b;
+        } else {
+            throw new AccessDenied();
+        }
     }
 }

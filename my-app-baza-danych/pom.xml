@@ -31,50 +31,8 @@
 	<version>1.6.4</version>
 </dependency>
 
-    
-    
-    
-    
-    <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring</artifactId>
-            <version>2.5.6</version>
-        </dependency>
-
-<dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-beans</artifactId>
-        <version>2.5.6</version>
-        <exclusions>
-          <exclusion>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-
-      <dependency>
-        <groupId>org.springframework</groupId>
-        <artifactId>spring-aop</artifactId>
-        <version>2.5.6</version>
-        <exclusions>
-          <exclusion>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-          </exclusion>
-        </exclusions>
-      </dependency>
-      
-      <dependency>
-    <groupId>org.aspectj</groupId>
-    <artifactId>aspectjrt</artifactId>
-    <version>1.6.11</version>
-</dependency>
-<dependency>
-    <groupId>org.aspectj</groupId>
-    <artifactId>aspectjweaver</artifactId>
-    <version>1.6.12</version>
-</dependency>    
+   
+   
 <dependency>
     <groupId>cglib</groupId>
     <artifactId>cglib</artifactId>
@@ -91,7 +49,31 @@
 	<artifactId>postgresql</artifactId>
 	<version>9.4-1201-jdbc41</version>
 </dependency>
+<dependency>
+	<groupId>org.flywaydb</groupId>
+	<artifactId>flyway-maven-plugin</artifactId>
+	<version>3.0</version>
+</dependency>
+
 
 
   </dependencies>
+  
+      <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>3.2.1</version>
+                <configuration>
+                    <url>jdbc:postgresql://127.0.0.1:5432/test</url>
+                    <user>test</user>
+					<password>test</password>
+			
+						<sqlMigrationPrefix>db_</sqlMigrationPrefix>
+						<sqlMigrationSeparator>__</sqlMigrationSeparator>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

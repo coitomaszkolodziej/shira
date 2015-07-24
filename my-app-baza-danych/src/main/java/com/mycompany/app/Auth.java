@@ -76,7 +76,7 @@ public class Auth {
         return true;
     }
     
-    boolean myCheckRole(String roleIdentifier)  throws AuthorizationException {
+    boolean myCheckRole(String roleIdentifier) {
         Subject currentUser = SecurityUtils.getSubject(); 
         try{
             currentUser.checkRole(roleIdentifier);
@@ -88,7 +88,7 @@ public class Auth {
         return true;
     }
     
-    boolean myCheckPermission(String permission)  throws AuthorizationException {
+    boolean myCheckPermission(String permission)  {
         Subject currentUser = SecurityUtils.getSubject(); 
         try{
             currentUser.checkPermission(permission);

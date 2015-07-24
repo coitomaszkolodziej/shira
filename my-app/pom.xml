@@ -9,6 +9,7 @@
     <url>http://maven.apache.org</url>
   
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -23,20 +24,25 @@
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-aspectj</artifactId>
+            <artifactId>shiro-guice</artifactId>
             <version>1.2.3</version>
-
+        </dependency>
+            <dependency>
+            <groupId>com.google.code.guice</groupId>
+            <artifactId>guice</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>aopalliance</groupId>
+            <artifactId>aopalliance</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
             <version>1.2.3</version>
         </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.8.4</version>
-        </dependency>
+
 
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -50,53 +56,7 @@
             <version>2.2.2</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>1.7.3</version>
-        </dependency>
-
-
+   
     </dependencies>
-  
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>aspectj-maven-plugin</artifactId>
-                <version>1.7</version>
-                <!-- new configuration is here -->
-                <configuration>
-                    <complianceLevel>1.6</complianceLevel>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <outxml>true</outxml>
-                    <outxmlfile>META-INF/aop.xml</outxmlfile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>compile</goal>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-                <includes>
-                    <include>aop.xml</include> <!-- ensures aop.xml ends inside the META-INF -->
-                </includes>
-                <targetPath>META-INF</targetPath>
-            </resource>
-            <resource>
-                <directory>src/main/resources</directory>
-                <excludes>
-                    <exclude>aop.xml</exclude> <!-- ensures all other resources end inside the default target path -->
-                </excludes>
-            </resource>
-        </resources>
-    </build>
+ 
 </project>

@@ -1,28 +1,31 @@
 package com.mycompany.app;
 
+import com.google.inject.Guice;
+import com.google.inject.Injector;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.LockedAccountException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.guice.aop.ShiroAopModule;
 
-import jdk.nashorn.internal.runtime.regexp.JoniRegExp.Factory;
-import org.apache.shiro.subject.Subject;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.config.IniSecurityManagerFactory;
-import org.apache.shiro.aop.AnnotationHandler;
-import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+public class App {
 
-public class App 
-{
-    public static void main( String[] args )
-    {
+    public static void main(String[] args) {
         Auth auth = Auth.getInstance();
-       
-        auth.login("radek", "radek");
-        
-        System.out.println(Math.add(7,1));
-        
+        try {
+            auth.login("radek", "radek");
+        } catch (UnknownAccountException uae) {
+        } catch (IncorrectCredentialsException ice) {
+        } catch (LockedAccountException lae) {
+        } catch (AuthenticationException ae) {
+        }
 
+        Injector injector = Guice.createInjector(new ShiroAopModule());
+        Math math = injector.getInstance(Math.class);
+
+        System.out.println(math.add(1, 2));
+       // System.out.println(math.multiply(1, 2));
 
     }
+
 }
