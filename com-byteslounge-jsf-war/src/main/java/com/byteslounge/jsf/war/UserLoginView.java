@@ -4,7 +4,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
- 
+ import javax.annotation.PostConstruct;
+
 import org.primefaces.context.RequestContext;
  
 @ManagedBean
@@ -14,16 +15,25 @@ public class UserLoginView {
      
     private String password;
 	
-	@PostContruct
+    @PostConstruct
 	public void checkIsLogged(){
-		Subject currUser = SecurityUtils.getSubject();
-		if( currUser.isAutenticated()){
-			RequestContext context = RequestContext.getCurrentInstance();
-			FacesMessage = null;
-			message = new FacesMessage(.SEVERITY_INFO, "You are logged in.", "KTOS");
+			Auth auth = Auth.getInstance();
+			if( auth.checkUserLogged() ){
+						RequestContext context = RequestContext.getCurrentInstance();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "You are logged in!", username);
+
 			FacesContext.getCurrentInstance().addMessage(null, message);
+			//przekieruj
+			}	// nic sie nie dzieje, wyswietl normalnie strone
+				else{
+							RequestContext context = RequestContext.getCurrentInstance();
+			FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "You are logged in!", username);
+
+			FacesContext.getCurrentInstance().addMessage(null, message);
+	
+				}
 		}
-	}
+	
  
     public String getUsername() {
         return username;
