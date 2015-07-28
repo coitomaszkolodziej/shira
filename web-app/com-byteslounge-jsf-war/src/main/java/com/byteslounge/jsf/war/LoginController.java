@@ -10,11 +10,7 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import javax.faces.bean.ManagedBean;
 
-/**
- * Simple JSF Controller demonstrating Shiro login/logout process.
- * 
- * @author Glen Smith
- */
+
 @Model
 @ManagedBean
 
@@ -24,16 +20,13 @@ public class LoginController {
     String password;
     boolean rememberMe = false;
  
-    private static final Logger log = Logger.getLogger(LoginController.class
-            .getName());
+    private static final Logger log = Logger.getLogger(LoginController.class.getName());
  
     public String authenticate() {
  
-        // Example using most common scenario of username/password pair:
         UsernamePasswordToken token = new UsernamePasswordToken(username,
                 password);
  
-        // "Remember Me" built-in:
         token.setRememberMe(rememberMe);
  
         Subject currentUser = SecurityUtils.getSubject();
