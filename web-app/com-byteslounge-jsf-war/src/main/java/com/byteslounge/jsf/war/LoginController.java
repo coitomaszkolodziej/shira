@@ -8,13 +8,16 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
- 
+import javax.faces.bean.ManagedBean;
+
 /**
  * Simple JSF Controller demonstrating Shiro login/logout process.
  * 
  * @author Glen Smith
  */
 @Model
+@ManagedBean
+
 public class LoginController {
  
     String username;
