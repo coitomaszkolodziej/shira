@@ -1,29 +1,24 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://java.sun.com/jsf/facelets"
     xmlns:h="http://java.sun.com/jsf/html"
     xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:p="http://primefaces.org/ui" template="/aluno_jsf.xhtml">
-
+    xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Witaj</title>
+    <script name="jquery/jquery.js" library="primefaces"></script>
 </h:head>
-<h:body>
-<h2>Witaj na stronie! </h2>
-
-
-<h:form>  
-    <p:growl id="messages" showDetail="false"/>
-     <p:menu>
-        <p:submenu label="Menu">
-			<p:menuitem value="Panel matematyczny" url="/" icon="ui-icon-calculator"/>
-            <p:menuitem value="Zaloguj" outcome="/login" icon="ui-icon-check"/>
-        </p:submenu>
-    </p:menu>
- 
+	<h2>Witaj #{indexView.userName} na naszej stronie </h2>
+	
+<h:form>
+    <p:growl id="message"></p:growl>
+    <p:menu my="left top" at="right top" model="#{menuManagedBean.menu}"></p:menu>
 </h:form>
 
-      
-</h:body>
+<h:form rendered="#{indexView.isLogged}">
+	<h:commandLink value="Wyloguj" action="#{loginController.logout}"/>
+</h:form>
+
+<h:form rendered="#{not indexView.isLogged}">
+	<h:commandLink value="Zaloguj" action="#{indexView.redirectToLogin}"/>
+</h:form>
+
 </html>
