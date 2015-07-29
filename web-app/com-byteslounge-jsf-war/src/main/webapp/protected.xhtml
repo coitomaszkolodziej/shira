@@ -14,33 +14,33 @@
     <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
 
 	<h:panelGrid columns = "5" cellpadding="5" id ="panel" >
-		<p:inputMask mask="9?9999" id = "aplus"  value = "#{MathPanelView.aplus}" maxlength="5" placeHolder=" "/>
+		<p:inputMask mask="9?9999" id = "aplus"  value = "#{mathPanelView.aplus}" maxlength="5" placeHolder=" "/>
 		<h:outputLabel value = "+" />
-		<p:inputMask mask = "9?9999" id = "bplus" value = "#{MathPanelView.bplus}" maxlength = "5" placeHolder=" "/>
-		<p:commandButton actionListener="#{MathPanelView.handleAddition}" process = "aplus bplus @this" 
+		<p:inputMask mask = "9?9999" id = "bplus" value = "#{mathPanelView.bplus}" maxlength = "5" placeHolder=" "/>
+		<p:commandButton actionListener="#{mathPanelView.handleAddition}" process = "aplus bplus @this" 
 		value = "=" update="growl" 	/>	
-		<p:inputMask mask = "9?9999" id = "result" value = "#{MathPanelView.result}" maxlength = "5" placeHolder=" "/>
+		<p:inputMask mask = "9?9999" id = "id_result_add" value = "#{mathPanelView.result}" maxlength = "5" placeHolder=" "/>
 		
 		<p:inputMask mask="9?9999" id = "aminus" maxlength="5" placeHolder=" "/>
 		<h:outputLabel value = "-" />
 		<p:inputMask mask = "9?9999" id = "bminus" maxlength = "5" placeHolder=" "/>
-		<p:commandButton actionListener="#{MathPanelView.handleSubstraction}" process = "aminus bminus @this" 
+		<p:commandButton actionListener="#{mathPanelView.handleSubstraction}" process = "aminus bminus @this" 
 		value = "=" update="growl" 	/>	
-		<p:inputMask mask = "9?9999" id = "result" maxlength = "5" placeHolder=" "/>
+		<p:inputMask mask = "9?9999" id = "id_result_sub" maxlength = "5" placeHolder=" "/>
 		
 		<p:inputMask mask="9?9999" id = "adziel" maxlength="5" placeHolder=" "/>
 		<h:outputLabel value = "/" />
 		<p:inputMask mask = "9?9999" id = "bdziel" maxlength = "5" placeHolder=" "/>
-		<p:commandButton actionListener="#{MathPanelView.handleDivision}" process = "adziel bdziel @this" 
+		<p:commandButton actionListener="#{mathPanelView.handleDivision}" process = "adziel bdziel @this" 
 		value = "=" update="growl" 	/>	
-		<p:inputMask mask = "9?9999" id = "result" maxlength = "5" placeHolder=" "/>
+		<p:inputMask mask = "9?9999" id = "id_result_div" maxlength = "5" placeHolder=" "/>
 		
 		<p:inputMask mask="9?9999" id = "amnoz" maxlength="5" placeHolder=" "/>
 		<h:outputLabel value = "*" />
 		<p:inputMask mask = "9?9999" id = "bmnoz" maxlength = "5" placeHolder=" "/>
-		<p:commandButton actionListener="#{MathPanelView.handleMultiplication}" process = "amnoz bmnoz @this" 
+		<p:commandButton actionListener="#{mathPanelView.handleMultiplication}" process = "amnoz bmnoz @this" 
 		value = "=" update="growl" 	/>	
-		<p:inputMask mask = "9?9999" id = "result" maxlength = "5" placeHolder=" "/>
+		<p:inputMask mask = "9?9999" id = "id_result_mul" maxlength = "5" placeHolder=" "/>
 		
 			
 	</h:panelGrid >
