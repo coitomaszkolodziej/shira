@@ -2,17 +2,49 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
     xmlns:f="http://java.sun.com/jsf/core">
 	
 <h:head>
     <title>protected Page</title>
 </h:head>
 <h:body>
- 
-        <h:messages />
- 
-        
-        <p>protected page</p>
+<h:form id ="foo">            
+
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+
+	<h:panelGrid columns = "5" cellpadding="5" id ="panel" >
+		<p:inputMask mask="9?9999" id = "aplus"  value = "#{MathPanelView.aplus}" maxlength="5" placeHolder=" "/>
+		<h:outputLabel value = "+" />
+		<p:inputMask mask = "9?9999" id = "bplus" value = "#{MathPanelView.bplus}" maxlength = "5" placeHolder=" "/>
+		<p:commandButton actionListener="#{MathPanelView.handleAddition}" process = "aplus bplus @this" 
+		value = "=" update="growl" 	/>	
+		<p:inputMask mask = "9?9999" id = "result" value = "#{MathPanelView.result}" maxlength = "5" placeHolder=" "/>
+		
+		<p:inputMask mask="9?9999" id = "aminus" maxlength="5" placeHolder=" "/>
+		<h:outputLabel value = "-" />
+		<p:inputMask mask = "9?9999" id = "bminus" maxlength = "5" placeHolder=" "/>
+		<p:commandButton actionListener="#{MathPanelView.handleSubstraction}" process = "aminus bminus @this" 
+		value = "=" update="growl" 	/>	
+		<p:inputMask mask = "9?9999" id = "result" maxlength = "5" placeHolder=" "/>
+		
+		<p:inputMask mask="9?9999" id = "adziel" maxlength="5" placeHolder=" "/>
+		<h:outputLabel value = "/" />
+		<p:inputMask mask = "9?9999" id = "bdziel" maxlength = "5" placeHolder=" "/>
+		<p:commandButton actionListener="#{MathPanelView.handleDivision}" process = "adziel bdziel @this" 
+		value = "=" update="growl" 	/>	
+		<p:inputMask mask = "9?9999" id = "result" maxlength = "5" placeHolder=" "/>
+		
+		<p:inputMask mask="9?9999" id = "amnoz" maxlength="5" placeHolder=" "/>
+		<h:outputLabel value = "*" />
+		<p:inputMask mask = "9?9999" id = "bmnoz" maxlength = "5" placeHolder=" "/>
+		<p:commandButton actionListener="#{MathPanelView.handleMultiplication}" process = "amnoz bmnoz @this" 
+		value = "=" update="growl" 	/>	
+		<p:inputMask mask = "9?9999" id = "result" maxlength = "5" placeHolder=" "/>
+		
+			
+	</h:panelGrid >
+ </h:form>       
       
 </h:body>
 </html>

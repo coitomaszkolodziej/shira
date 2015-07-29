@@ -19,7 +19,7 @@
         <h2>Strona Logowania:</h2>
    
      
-		<h:panelGrid id="panel" columns="3" callpadding="5">
+		<p:panelGrid id="panel" columns="3" callpadding="5">
  
              <h:outputLabel for="username" value="Username:" />
             <p:inputText id="username" value="#{loginController.username}" required="true" label="username" />
@@ -37,7 +37,7 @@
             <h:commandButton id = "button" action="#{loginController.authenticate()}" update = "growl"
 			  value="Loguj" />
  
-        </h:panelGrid>
+        </p:panelGrid>
     </h:form>
 	<script type="text/javasricpt">
 	$(function(){
