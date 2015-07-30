@@ -9,26 +9,21 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
-import javax.faces.context.ExternalContext;
-import java.io.IOException;
+import org.primefaces.context.RequestContext;
+
  
 @Model
 @ManagedBean
 public class LoginController {
  
-    String username;
-    String password;
+    private String username;
+    private String password;
     boolean rememberMe = false;
  
     private static final Logger log = Logger.getLogger(LoginController.class.getName());
  
-	private void showInfoMessage(String m){
-		FacesContext.getCurrentInstance().addMessage(null,  new FacesMessage(FacesMessage.SEVERITY_INFO, m, username));
-	}
-	private void showWarningMessage(String m){
-		FacesContext.getCurrentInstance().addMessage(null,  new FacesMessage(FacesMessage.SEVERITY_WARN, m, username));
-	}
-    public void authenticate() throws IOException{
+
+    public String authenticate() {
  
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
          token.setRememberMe(rememberMe);
@@ -38,28 +33,24 @@ public class LoginController {
  
         try {
             currentUser.login(token);
-			index ();
         } catch (AuthenticationException e) {
             log.warning(e.getMessage());
-            showWarningMessage("Bledne haslo lub nazwa uzytkownika");
+			(new Messages()).showWarningMessage("Bledne haslo lub nazwa uzytkownika");
+            return "";
         }
-		
+        return "protected?faces-redirect=true";
      }
-	 
-	 public void index() throws IOException{
-		ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		ec.redirect(ec.getRequestContextPath() + "/index.xhtml");
-	 }
  
     public String logout() {
-		log.info ("logout");
+ 			(new Messages()).showWarningMessage("Wylog");
+
         Subject currentUser = SecurityUtils.getSubject();
         try {
             currentUser.logout();
         } catch (Exception e) {
             log.warning(e.toString());
         }
-        return "index";
+        return "index?faces-redirect=true";
     }
  
     public String getUsername() {
