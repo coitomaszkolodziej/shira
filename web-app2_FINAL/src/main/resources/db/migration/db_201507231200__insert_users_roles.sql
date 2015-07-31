@@ -1,0 +1,4 @@
+INSERT INTO users_roles VALUES(DEFAULT, 1, 1);
+INSERT INTO users_roles VALUES(DEFAULT, 2, 4);
+INSERT INTO users_roles VALUES(DEFAULT, 3, 3);
+INSERT INTO users_roles VALUES(DEFAULT, 3, 4);

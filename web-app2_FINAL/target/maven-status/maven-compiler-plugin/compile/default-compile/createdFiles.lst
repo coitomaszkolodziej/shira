@@ -1,0 +1,11 @@
+com\byteslounge\jsf\war\DBConnection.class
+com\byteslounge\jsf\war\Permission.class
+com\byteslounge\jsf\war\MathPanelView.class
+com\byteslounge\jsf\war\PermissionsBean.class
+com\byteslounge\jsf\war\User.class
+com\byteslounge\jsf\war\UsersBean.class
+com\byteslounge\jsf\war\RolesView.class
+com\byteslounge\jsf\war\Role.class
+com\byteslounge\jsf\war\RolesBean.class
+com\byteslounge\jsf\war\Messages.class
+com\byteslounge\jsf\war\LoginController.class

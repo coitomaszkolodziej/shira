@@ -1,0 +1,11 @@
+package com.byteslounge.jsf.war;
+
+public class User{
+	private int user_id;
+	private String user_name;
+	private String user_password;
+
+	/* Gettery, settery, etc */
+
+	
+	}

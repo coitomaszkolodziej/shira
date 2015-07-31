@@ -1,0 +1,96 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://java.sun.com/jsf/core">
+	
+<h:head>
+    <title>MathPanel</title>
+</h:head>
+<h:body>
+ <p:menubar autoDisplay="false">
+        <p:menuitem value="Home" url="/index.xhtml" icon = "ui-icon-home" />
+
+        <f:facet name="options">
+			<h:form>
+			    <p:commandButton id = "button" action="#{loginController.logout()}" value="Wyloguj" icon="ui-icon-extlink" />
+			</h:form>
+	   </f:facet>
+</p:menubar>
+
+
+
+
+
+<h:form>
+    <p:growl id="msgs" showDetail="true" />
+ 
+    <p:panel header="Sprawdz uprawnienia " style="margin-bottom:10px;">
+        <h:panelGrid columns="2" cellpadding="5">
+         
+
+		 <p:outputLabel for="userName" value="Uzytkownik: " />
+            <p:selectOneMenu id="userName" value="#{rolesView.userId}" style="width:200px">
+                <p:ajax listener="#{rolesView.onUserChanged}" update="roleName permissionList" />
+			 <f:selectItem itemLabel="Wybierz uzytkownika" itemValue="" noSelectionOption="true" />
+                <f:selectItems value="#{rolesView.usersMap}" />
+ 
+           </p:selectOneMenu>
+		   
+ 		<p:outputLabel for = "roleName" value ="Rola" />
+		<p:selectOneMenu id="roleName" value="#{rolesView.roleId}" style ="width:200px" >
+			<p:ajax listener = "#{rolesView.onRoleChanged}" update="permissionList" />
+			<f:selectItem itemLabel="Wybierz role" itemValue="" noSelectionOption="true" />
+			<f:selectItems value = "#{rolesView.rolesMap}" />
+		</p:selectOneMenu>
+ 	
+		     <p:dataList id="permissionList" value="#{rolesView.permissionsList}" var="permission" type="ordered">
+				<f:facet name="header">Lista uprawnien</f:facet>
+				#{permission.permissionName}
+				</p:dataList>
+ 
+	
+        </h:panelGrid>
+ 
+ 
+    </p:panel>
+</h:form>
+
+<h:form id ="foo">            
+
+    <p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+    
+	<p:panel header="Opcje:" style="margin-bottom:10px;">
+
+	<h:panelGrid columns = "5" cellpadding="5" id ="panel" >
+		<p:inputMask mask="9?9999" id = "aplus"  value = "#{mathPanelView.aplus}"  />
+		+
+		<p:inputMask mask = "9?9999" id = "bplus" value = "#{mathPanelView.bplus}"  />
+		<p:commandButton actionListener="#{mathPanelView.handleAddition()}" process = "aplus bplus @this" 
+		value = "=" update="wplus,growl" partialSubmit = "true"	/>	
+		<h:outputText  id = "wplus" value = "#{mathPanelView.wplus}"  />
+		
+		<p:inputMask mask="9?9999" id = "aminus" value = "#{mathPanelView.aminus}"  />
+		-
+		<p:inputMask mask = "9?9999" id = "bminus" value = "#{mathPanelView.bminus}"  />											 
+		<p:commandButton actionListener="#{mathPanelView.handleSubstraction()}" process = "aminus bminus @this" 
+		value = "=" update="wminus, growl" 	partialSubmit = "true"/>	
+				<h:outputText  id = "wminus" value = "#{mathPanelView.wminus}"  />
+			
+		<p:inputMask mask="9?9999" id = "amnoz" value = "#{mathPanelView.amnoz}"  />
+		*
+		<p:inputMask mask = "9?9999" id = "bmnoz" value = "#{mathPanelView.bmnoz}"  />
+		<p:commandButton actionListener="#{mathPanelView.handleMultiplication()}" process = "amnoz bmnoz @this" 
+		value = "=" update="wmnoz,growl" partialSubmit = "true"	/>	
+				<h:outputText  id = "wmnoz" value = "#{mathPanelView.wmnoz}"  />
+			
+	</h:panelGrid >
+	
+	
+	</p:panel>
+ </h:form>       
+      
+</h:body>
+
+</html>

@@ -1,0 +1,4 @@
+1. Wykonać mvn flyway:migrate
+2. Wykonać mvn install
+3. Powsataje wynikowy plik NAZWA.war, ktory nalezy skopiowac do folderu tomcat/webabpp ( w przypadku serwera Apache Tomcat)
+4. Strona dostepna pod adresem: 127.0.0.1:8080/NAZWA
